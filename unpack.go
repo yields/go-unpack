@@ -18,9 +18,9 @@ var debug = Debug("unpack")
 // Copy tarball `reader` to `path`.
 //
 
-func UnpackTarball(in io.ReadCloser, path string, strip int) error {
+func UnpackTarball(reader io.ReadCloser, path string, strip int) error {
 	debug("unpacking to '%s'", path)
-	tarball := tar.NewReader(in)
+	tarball := tar.NewReader(reader)
 
 	for {
 		header, err := tarball.Next()
