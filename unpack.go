@@ -50,6 +50,11 @@ func UnpackTarball(reader io.ReadCloser, path string, strip int) error {
 			continue
 		}
 
+		if header.Typeflag == tar.TypeXGlobalHeader || header.Typeflag == tar.TypeXHeader {
+			debug("ignore global headers")
+			continue
+		}
+
 		debug("unpack '%s' -> '%s'", header.Name, dst)
 		file, err := os.Create(dst)
 		if err != nil {
