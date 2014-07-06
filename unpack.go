@@ -50,7 +50,7 @@ func UnpackTarball(reader io.ReadCloser, path string, strip int) error {
 			continue
 		}
 
-		if header.Typeflag == tar.TypeXGlobalHeader || header.Typeflag == tar.TypeXHeader {
+		if header.Typeflag == tar.TypeXGlobalHeader {
 			debug("ignore global headers")
 			continue
 		}

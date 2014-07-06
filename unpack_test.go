@@ -22,15 +22,6 @@ func TestUnpack(t *testing.T){
       log.Fatal(err)
     }
   }
-  {
-    test := Join(tests, "git.tar")
-    src, _ := os.Open(test)
-    dst := Join(path, "git")
-    err := UnpackTarball(src, dst, 0)
-    if err != nil {
-      log.Fatal(err)
-    }
-  }
 
   os.RemoveAll(path)
 }
